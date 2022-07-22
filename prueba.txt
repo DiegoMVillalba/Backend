@@ -1,0 +1,9 @@
+[
+  {
+    "nombre": "Remera",
+    "precio": 550,
+    "categoria": "Remera",
+    "descripcion": "Remera Negra",
+    "id": 1
+  }
+]
