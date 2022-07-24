@@ -1,14 +1,28 @@
-const Contenedor =require('./contenedor');
+const Contenedor =require('./Contenedor');
+const Class = new Contenedor('./prueba.txt');
+
+const express = require('express')
 
 
-const contenedor = new Contenedor('./prueba.txt')
+const app = express()
+const port = 8080
 
-contenedor.save({nombre:'Remera', precio: 550, categoria: 'Remera', descripcion:'Remera Negra'})
+app.get('/productos', async(request,response) =>{
+    let product = await Class.getAll();
+    response.send(product)
+} )
 
-// contenedor.getById(2)
+app.get('/random', async (request, response) =>{
+    let quantity = await Class.getLength();
+    let random = Math.floor(Math.random() * quantity) + 1;
+    let randomProduct = await Class.getById(random)
+    response.send(randomProduct);
+})
 
-// contenedor.getAll()
 
-// contenedor.deleteId(2)
 
-// contenedor.deleteAll()
+
+
+app.listen(port, () =>{
+    console.log(`Servidor corriendo en el puerto : ${port}`)
+})

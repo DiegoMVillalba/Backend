@@ -23,10 +23,11 @@ class Contenedor {
         }
 
 }
-
-
-
-       
+    async getLength(){
+        let dataArch = await fs.promises.readFile(this.ruta,'utf8')
+        let dataArchParse = JSON.parse(dataArch) 
+        return dataArchParse.length;
+    }     
     
 
     async getById(id){
