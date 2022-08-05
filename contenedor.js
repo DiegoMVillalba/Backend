@@ -1,22 +1,32 @@
+const { json } = require('express');
 const fs = require('fs');
 
 class Contenedor {
-    constructor(ruta){
-    this.ruta = ruta
+    constructor(route){
+    this.route = route
     }
+
+    async #readFileFunction(route){
+        let file = await fs.promises.readFile(route, 'utf-8')
+        let parsedFile = await JSON.parse(file)
+        return parsedFile
+    }
+
+
 
     async save(obj){
         try {
-            let dataArch = await fs.promises.readFile(this.ruta, 'utf8');
-            let dataArchParse = JSON.parse(dataArch) 
-            if (dataArchParse.length){
-                await fs.promises.writeFile(this.ruta, JSON.stringify([...dataArchParse, {...obj, id:dataArchParse.length + 1}],null, 2))
+            let dataArch = await this.#readFileFunction(this.route);
+            
+            if (dataArch.length){
+                await fs.promises.writeFile(this.route, JSON.stringify([...dataArch, {...obj, id:dataArch.length + 1}],null, 2))
                 
             }else{
-                await fs.promises.writeFile(this.ruta, JSON.stringify([{...obj, id:dataArchParse.length + 1}],null, 2))
+        
+                await fs.promises.writeFile(this.route, JSON.stringify([{...obj, id:dataArch.length + 1}],null, 2))
 
             }
-            console.log(`el Archivo tiene el id: ${dataArchParse.length + 1}`)
+            console.log(`el Archivo tiene el id: ${dataArch.length + 1}`)
             
         } catch (error) {
             console.log(error);
@@ -24,19 +34,20 @@ class Contenedor {
 
 }
     async getLength(){
-        let dataArch = await fs.promises.readFile(this.ruta,'utf8')
-        let dataArchParse = JSON.parse(dataArch) 
-        return dataArchParse.length;
+        let dataArch = await this.#readFileFunction(this.route,)
+        
+        return dataArch.length;
     }     
     
 
     async getById(id){
-        let dataArch =await fs.promises.readFile(this.ruta, 'utf8')
-        let dataArchParse = JSON.parse(dataArch)
-        let producto=dataArchParse.find(producto=> producto.id === id)
+        let dataArch = await this.#readFileFunction(this.route, 'utf8')
+        
+        let producto = dataArch.find(producto=> producto.id === id)
         try {
             if(producto){ 
                 console.log(producto)
+                return producto
             } else {               
                     console.log('No se encontro el producto')  
                 }               
@@ -47,13 +58,40 @@ class Contenedor {
 
             
     }
+
+    async updateById(obj){
+        try {
+            let dataArch = await this.#readFileFunction(this.route);
+            
+            const indexObj = dataArch.findIndex(prod => prod.id === obj.id)
+            if (indexObj !== -1){
+
+                dataArch[indexObj] = obj
+
+                await fs.promises.writeFile(this.route, JSON.stringify(dataArch, null, 2))
+
+                return {msg:`Actualizado el producto ${obj.id}`}
+                
+            }else{
+                return {error: 'No existe el producto'}
+
+            }
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+
      async getAll(){
         try {
-            let dataArch =await fs.promises.readFile(this.ruta, 'utf8')
-            let dataArchParse = JSON.parse(dataArch)
-            if(dataArchParse.length){
+            let dataArch =await this.#readFileFunction(this.route, 'utf8')
+            
+            if(dataArch.length){
 
-                console.log(dataArchParse)
+                console.log(dataArch)
+                return dataArch
             }else{
                 console.log('no hay productos')
             }
@@ -65,12 +103,11 @@ class Contenedor {
 
      async deleteId(id){
         try {
-            let dataArch =await fs.promises.readFile(this.ruta, 'utf8')
-            let dataArchParse = JSON.parse(dataArch)
-            let producto=dataArchParse.find(producto=> producto.id === id)
+            let dataArch =await this.#readFileFunction(this.route, 'utf8')
+            let producto=dataArch.find(producto=> producto.id === id)
                 if(producto){
-                    let dataArchParseFiltrado = dataArchParse.filter(producto => producto.id !== id)
-                    await fs.promises.writeFile(this.ruta, JSON.stringify(dataArchParseFiltrado, null, 2), 'utf8')
+                    let dataArchFiltrado = dataArch.filter(producto => producto.id !== id)
+                    await fs.promises.writeFile(this.route, JSON.stringify(dataArchFiltrado, null, 2), 'utf8')
                     console.log('producto eliminado')
                     }   else{
                             console.log('no existe el producto')
@@ -84,7 +121,7 @@ class Contenedor {
 
 
     async deleteAll(){
-        await fs.promises.writeFile(this.ruta, JSON.stringify([], null, 2), 'utf8')
+        await fs.promises.writeFile(this.route, JSON.stringify([], null, 2), 'utf8')
         console.log('Productos eliminados')
     }
 
