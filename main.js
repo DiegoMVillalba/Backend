@@ -42,7 +42,9 @@ products.put('/:id', async (req, res) =>{
    const productObj = req.body
    console.log(productObj)
     const response = Container.updateById({id: parseInt(id), ...productObj})
-    res.json({msg:"Producto actualizado"})
+    res.json({msg:"Producto actualizado",
+    response
+})
    
 
 })
@@ -67,3 +69,5 @@ app.listen(8080, err => {
     if(err) throw err
     console.log(`Server running on ${PORT} `)
 })
+
+

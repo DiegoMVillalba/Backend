@@ -1,0 +1,26 @@
+ <div class="container">
+        <div class="row m-4">
+            
+        <div class="col d-flex flex-column align-items-center">
+            <form method="POST" action="/ok">
+                <div class="input-group mb-5">
+                    <span class="input-group-text" for="product">Producto</span>
+                    <input type="text" class="form-control" id="product" name="product" placeholder="Producto">
+                </div>
+                <div class="input-group mb-5">
+                    <span for="price" class="input-group-text">$</span>
+                    <input type="number" class="form-control" id="price" name="price" placeholder="Precio">
+                </div>
+                <div class="input-group mb-5">
+                    
+                    <input type="text" class="form-control" id="thumbnail" name="thumbnail" placeholder="Thumbnail">
+                </div>
+                <button type="submit" class="btn btn-dark w-100">Agregar</button>
+                <div class="d-flex flex-column align-items-center">
+                   
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+    {{>btn}}
