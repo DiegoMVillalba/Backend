@@ -10,18 +10,14 @@ html
              crossorigin="anonymous"
         )
         
+
     body
-        include title.pug
+        include partials/title.pug
         div(class="container")          
             div(class="row m-4")
-                h2="Agregar producto"
-                div(class="col")
-                    img(src="adidasFrente.webp"
-                        class="img-fluid"
-                        )
                 div(class="col d-flex flex-column align-items-center")
                     form(method="POST"
-                        action="/creador")
+                        action="/Form")
                         div(class="input-group mb-5")
                             span(class="input-group-text" 
                                 id="basic-addon1")="Nombre del producto"
@@ -31,10 +27,10 @@ html
                             input(type="text" class="form-control" id="precio" name="precio"   )
                         label(for="basic-url"
                             class="form-label"
-                            )="Coloque una imagen de el banco de Assets de Adidas"
+                            )
                         div(class="input-group mb-5")
                             span(class="input-group-text"
-                                id="basic-addon3")="https://assets.adidas.com/images/....jpg"
+                                id="basic-addon3")="Thumbnail"
                             input(type="text"
                                 class="form-control" 
                                 id="thumbnail"
@@ -42,9 +38,4 @@ html
                                 aria-describedby="basic-addon3")
                         button(type="submit"
                                 class="btn btn-dark w-100")="Agregar Producto"
-                        div(class="d-flex flex-column align-items-center")
-                            img(src="adidas-logo.svg"
-                                class="img-fluid w-50"
-                                value="Submit"
-                                )
-        
+                        

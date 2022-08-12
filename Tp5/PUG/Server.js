@@ -1,5 +1,5 @@
 const Container = require('./Container');
-const container = new Container('./pueba.txt');
+const container = new Container('./prueba.txt');
 
 
 const express = require('express');
@@ -16,31 +16,31 @@ app.set('view engine', 'pug')
 
 
 app.get('/', (req, res) => {  
-  res.render('partials/Form.pug', {
-    titulo: "Subir productos Adidas",
-    hayLista: true,
-    nav:"creador"})
-})
-
-app.post('/creador', async (req, res) => {
-    const producto = await container.save(req.body);
-    const creado =  producto != -1
-    console.log(producto)
-    res.render('partials/Ok.pug', {     
-      hayProducto: creado
-    })
- })
-
-app.get('/productos', async (req, res) => {
-    const producto = await container.getAll();
-    const hayLista = producto.length > 0;
-    res.render('index', {
-        titulo: "Adidas 2022", 
-        listaProductos: producto,
-        hayLista,
-        nav:"productos"
-      })
-})
+	res.render('Formulario.pug', {
+	  title: "Subir productos ",
+	  listExist: true,
+	  nav:"creador"})
+  })
+  
+  app.post('/Form', async (req, res) => {
+	  const product = await container.save(req.body);
+	  const create =  product != -1
+	  
+	  res.render('Ok.pug', {     
+		newProduct: create
+	  })
+   })
+  
+  app.get('/productos', async (req, res) => {
+	  const product = await container.getAll();
+	  const listExist = product.length > 0;
+	  res.render('index', {
+		  title: "Productos", 
+		  prodList: product,
+		  listExist,
+		  nav:"product"
+		})
+  })
 
 
 

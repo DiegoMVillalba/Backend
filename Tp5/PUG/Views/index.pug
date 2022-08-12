@@ -1,3 +1,4 @@
+
 html    
     head
         title=titulo
@@ -10,13 +11,14 @@ html
              crossorigin="anonymous"
         )
         
+            
 
     body
         include partials/title.pug
         div(class="container")
             div(class="d-flex p-2 bd-highlight flex-wrap")
-                if hayLista
-                    each val in listaProductos
+                if listExist 
+                    each val in prodList
                         div(class="card m-2"
                             style="width: 18rem;"
                             )
@@ -28,8 +30,3 @@ html
                                 p(class="card-text")=val.precio 
                 else 
                     h2="No hay productos"
-                   
-        
-       
-                  
-                
