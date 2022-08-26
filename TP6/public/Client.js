@@ -15,9 +15,10 @@ const render = mensajeChat =>{
 
 const addMensaje = (evt) => {
     const mail = document.getElementById('mail').value;
+    let hora = new Date().toLocaleTimeString();
     const mensaje = document.getElementById('mensaje').value;
 
-    const chats = {mail, mensaje}
+    const chats = {mail,hora, mensaje}
 
     server.emit('nuevo-chat', chats, id=>{
         console.log(id);

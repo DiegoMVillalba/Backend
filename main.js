@@ -15,13 +15,14 @@ products.get('/', async (req, res) =>{
     const allProducts = await Container.getAll();
     res.json(allProducts)
 });
+
 //buscar por id
 products.get('/:id', async (req, res) =>{
     const {id} = req.params
     const productId = Container.getById(+id);
     res.json(productId);
-
 });
+
 //agregar productos
 products.post('/', (req, res) =>{
     const productObj = req.body
@@ -31,11 +32,10 @@ products.post('/', (req, res) =>{
             ok: true,
             mensaje: 'El Post se agrego correctamente',
             id: productObj
-        })
-   
-    
+        })     
    
 });
+
 //Actualizar por id 
 products.put('/:id', async (req, res) =>{
    const {id} = req.params
@@ -45,9 +45,8 @@ products.put('/:id', async (req, res) =>{
     res.json({msg:"Producto actualizado",
     response
 })
-   
-
 })
+
 //Borrar por id
 products.delete('/:id', async(req, res) =>{
     const {id} =req.params
@@ -55,7 +54,6 @@ products.delete('/:id', async(req, res) =>{
     res.json({
         msg:"Producto eliminado"
     })
-
 })
 
 
