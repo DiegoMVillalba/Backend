@@ -1,5 +1,7 @@
-POST http://localhost:8080/api/carrito/ HTTP/1.1
+POST http://localhost:8080/api/carritoHTTP/1.1
 Content-Type: application/json
+
+
 
 {
     "id": 3,
