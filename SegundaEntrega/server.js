@@ -20,6 +20,7 @@ app.use('*', (req, res) => {
 });
 
 connectionDB()
+console.log(connectionDB)
 
 const server = app.listen(PORT, () => {
 	
