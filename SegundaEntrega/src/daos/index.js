@@ -1,8 +1,8 @@
 require("dotenv").config();
 
-const CarritoDaoArchivo = require("./carritos/CarritoDaoArchivo.js");
-const CarritoDaoFirebase = require("./carritos/CarritoDaoFirebase.js");
-const CarritoDaoMongoDB = require("./carritos/CarritoDaoMongoDB.js");
+const CarritoDaoArchivo = require('../daos/carritos/CarritoDaoArchivo');
+const CarritoDaoFirebase = require('../daos/carritos/CarritoDaoFirebase');
+const CarritoDaoMongoDB = require('../daos/carritos/CarritoDaoMongoDB');
 
 const ProductoDaoArchivo = require("./productos/ProductoDaoArchivo.js");
 const ProductoDaoMongoDB = require("./productos/ProductoDaoMongoDB.js");

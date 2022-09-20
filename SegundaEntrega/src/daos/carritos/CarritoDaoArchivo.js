@@ -1,4 +1,4 @@
-const  ContenedorArchivo = require('../../container/ContenedorArchivo.js');
+const  ContenedorArchivo = require('../../container/ContenedorArchivo');
 
 
 class CarritoDaoArchivo extends ContenedorArchivo{

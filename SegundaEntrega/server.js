@@ -3,13 +3,13 @@ require('dotenv').config();
 const path = require('path');
 const app = express();
 
-const Carrito = require("./src/daos/index.js")
-const Producto = require("./src/daos/index.js")
+const Carrito = require('./src/daos/index')
+const Producto = require('./src/daos/index')
 
 
 const Carritos = new Carrito();
 const Productos = new Producto();
-
+console.log(Carritos)
 
 app.use(express.json());
 app.use(express.urlencoded ( {extended:true } ) );
