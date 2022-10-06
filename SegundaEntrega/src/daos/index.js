@@ -11,8 +11,7 @@ const ProductoDaoFirebase = require("./productos/ProductoDaoFirebase.js");
 // export condicional a la variable ENVIROMENT DAO
 
 if (process.env.DAO === "FS") {
-	exports.Carrito = CarritoDaoArchivo;
-	exports.Producto = ProductoDaoArchivo;
+	module.exports = {CarritoDaoArchivo, ProductoDaoArchivo}
 } else if (process.env.DAO === "MONGO") {
 	exports.Carrito = CarritoDaoMongoDB;
 	exports.Producto = ProductoDaoMongoDB;
