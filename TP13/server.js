@@ -3,17 +3,18 @@ const { Server: HttpServer } = require('http');
 const { Server: IOServer } = require('socket.io');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-require('dotenv').config();
 const mongoose = require('mongoose');
+// const mongoConnect = require('./utils/MongoDBConnect')
 const { engine } = require('express-handlebars');
 const passport = require('passport');
-const parseArgs = require('minimist');
-const args = parseArgs(process.argv.slice(2));
-
 const router = require('./routes/router');
 const Container = require('./container.js');
-require('./middlewares/auth');
 const { optionsMariaDB, optionsSQLite3 } = require('./options/config.js');
+const parseArgs = require('minimist');
+const args = parseArgs(process.argv.slice(2))
+
+require('./middlewares/auth');
+require('dotenv').config()
 
 const PORT = args._[0] || 8080;
 const app = express();
@@ -28,49 +29,48 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cookieParser());
-app.use(
-	session({
-		secret: 'keyboard cat',
-		resave: false,
-		saveUninitialized: false,
-		rolling: true,
-		cookie: {
-			httpOnly: false,
-			secure: false,
-			maxAge: 100000,
-		},
-	})
-);
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    rolling: true,
+    cookie: {
+        httpOnly: false,
+        secure: false,
+        maxAge: 100000
+    }
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(router);
 app.use(express.static('views'));
 app.engine('handlebars', engine());
 app.set('views', './views');
 app.set('view engine', 'handlebars');
-app.use(router);
 
 io.on('connection', async socket => {
-	console.log('Conexión establecida');
-	const dbProducts = await products.getAll();
-	io.sockets.emit('products', dbProducts);
-	const dbMessages = await messages.getAll();
-	io.sockets.emit('messages', dbMessages);
-	socket.on('product', async product => {
-		products.save(product);
-		const dbProducts = await products.getAll();
-		io.sockets.emit('products', dbProducts);
-	});
-	socket.on('message', async message => {
-		messages.save(message);
-		const dbMessages = await messages.getAll();
-		io.sockets.emit('messages', dbMessages);
-	});
+    console.log('Conexión establecida');
+    const dbProducts = await products.getAll();
+    io.sockets.emit('products', dbProducts);
+    const dbMessages = await messages.getAll();
+    io.sockets.emit('messages', dbMessages);
+    socket.on('product', async product => {
+        products.save(product);
+        const dbProducts = await products.getAll();
+        io.sockets.emit('products', dbProducts);
+    })
+    socket.on('message', async message => {
+        messages.save(message);
+        const dbMessages = await messages.getAll();
+        io.sockets.emit('messages', dbMessages);
+    })
 });
-
-const server = httpserver.listen(PORT, () => {
-	// mongoose.connect(process.env.MONGODBURL);
-	console.log(`Server running on port ${PORT}`);
+// mongoConnect() no entiendo porque no conecta de estea manera
+const server = httpserver.listen(PORT, async () => {
+    
+    await mongoose.connect(process.env.MONGODB);
+    console.log(`Server running on port ${PORT}`);
 });
 server.on('error', err => console.log(`Error: ${err}`));
