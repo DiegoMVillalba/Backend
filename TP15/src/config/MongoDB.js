@@ -1,8 +1,10 @@
 import mongoose from 'mongoose';
 import logger from '../loggers/log4jsLogger.js';
-require('dotenv').config();
+import dotenv from 'dotenv';
 
-mongoose.connect(process.env.MONGODB, (err) =>{
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_URI, (err) =>{
     err 
     ?
     logger.error('Error al conectarse a MongoDB')

@@ -1,7 +1,7 @@
 function generateRandomNumbers(n) {
     const randomNumbers = [];
 
-    for(i = 0; i < n; i++) {
+    for(let i = 0; i < n; i++) {
         randomNumbers.push(
             Math.floor(Math.random() * 1000)
         )
@@ -13,3 +13,4 @@ process.on('message', (num) => {
     const numbers = generateRandomNumbers(num)
     process.send(numbers);
 })
+

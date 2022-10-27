@@ -9,10 +9,10 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import mongoStore from 'connect-mongo';
 import compression from 'compression';
-import minimist from ' minimist';
-import logger from './loggers/log4jsLogger.js';
+import minimist from 'minimist';
+import logger from './loggers/Log4jsLogger.js';
 import loggerMiddleware from './middlewares/routesLogger.middleware.js';
-require('dotenv').config();
+
 const app = express();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -72,7 +72,7 @@ const options = {
     }
 };
 
-app._router.stack.foreach(function(r){
+app._router.stack.forEach(function(r){
     if(r.route && r.route.path){
         console.log(r.route.path);
     };

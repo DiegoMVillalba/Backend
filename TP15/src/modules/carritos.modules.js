@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const Schema = new mongoose.Schema({
     timestamp:{
@@ -7,7 +7,7 @@ const Schema = new mongoose.Schema({
     },
     products:[
             {
-               type: mongoose.Schema.Types.ObjetId,
+               type: mongoose.Schema.Types.ObjectId,
                ref:'productos'
         }
     ]
