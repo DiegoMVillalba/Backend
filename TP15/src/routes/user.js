@@ -27,7 +27,7 @@ router.get('/', async ( req, res ) => {
     res.render('pages/home', {status: req.session.login})
 })
 
-router.get('/logiut', async (req, res) => {
+router.get('/logout', async (req, res) => {
     req.session.destroy( (err) => {
         if(err){
             res.json(err);

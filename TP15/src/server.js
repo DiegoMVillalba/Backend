@@ -21,14 +21,14 @@ const __dirname = path.dirname(__filename);
 app.use(loggerMiddleware);
 app.use(express.static('public'));
 app.use(compression());
-app.set('views', '/src/views');
+app.set('views', './src/views');
 app.set('view engine', 'hbs');
 
 app.engine(
     'hbs',
     engine({
             extname:'.hbs',
-            degaultLayout: 'index.hbs',
+            defaultLayout: 'index.hbs',
             layoutsDir: __dirname + '/views/layouts',
             partialsDir: __dirname + '/views/partials'
     })
