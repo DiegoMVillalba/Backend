@@ -5,7 +5,6 @@ import logger from '../loggers/Log4jsLogger.js';
 
 router.get('/login', async (req, res) => {
     logger.info();
-
     req.session.login
     ? res.redirect('/api/usuario')
     :res.render('pages/login', {status:false});
