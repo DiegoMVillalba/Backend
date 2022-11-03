@@ -19,7 +19,7 @@
 
 **Deploy:** https://diegoch-server.herokuapp.com/ 
 
-<img src="deployRutaEjemplo.png" alt="Deploy ejemplo"/>
+<img src="test-info.png" alt="Deploy ejemplo"/>
 
 
 Para poder deployar este proyecto, tuve que dejar de utilizar MongoDB local y utilizar MongoDB Atlas, por lo que las siguientes acciones fueron necesarias para que todo funcione correctamente:
@@ -51,6 +51,3 @@ server.on('error', (err) => logger.error(err));
   }
 ```
 
-4. Habilitar en nuestro MongoDB Atlas a todas las IPs, sino el acceso desde Heroku (y del exterior) será negado
-
-<img src="networkAccessMongoAtlas.png" alt="MongoDB Atlas Network settings"/>
