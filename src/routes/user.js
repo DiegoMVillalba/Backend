@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import session from 'express-session';
+
 import logger from '../loggers/Log4jsLogger.js';
 
 router.get('/login', async (req, res) => {

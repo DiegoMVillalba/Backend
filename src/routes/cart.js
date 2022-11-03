@@ -1,7 +1,7 @@
 import express from 'express';
 import { CarritoDao } from '../dao/CarritoDao.js';
 import { ProductoDao } from '../dao/ProductoDao.js';
-import logger from '../loggers/Log4jsLogger.js'; 
+
 
 const router = express.Router();
 const carritoDao = new CarritoDao();
@@ -32,7 +32,7 @@ router.post('/:id/productos', async (req, res) => {
     const { id } = req.params;
     const { body } = req;
 
-    const productExists = await productoDao.exists(body.productId);
+    const productExists = await ProductoDao.exists(body.productId);
 
     productExists
     ? await carritoDao.saveProductToCart(id, body.productId)

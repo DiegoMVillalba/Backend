@@ -1,6 +1,6 @@
 import '../config/MongoDB.js';
 import { ProductosModel } from '../modules/productos.modules.js';
-import logger from '../loggers/log4jsLogger.js';
+import logger from '../loggers/Log4jsLogger.js';
 
 export class ProductoDao {
     

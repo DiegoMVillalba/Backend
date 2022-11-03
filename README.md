@@ -17,7 +17,7 @@
 ----
 ### Solución
 
-**Deploy:** https://deployentrega17.herokuapp.com
+**Deploy:** https://diegoch-server.herokuapp.com/ 
 
 <img src="deployRutaEjemplo.png" alt="Deploy ejemplo"/>
 
