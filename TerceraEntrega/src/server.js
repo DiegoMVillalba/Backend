@@ -80,11 +80,11 @@ const options = {
 
 app._router.stack.forEach(function (r) {
     if (r.route && r.route.path) {
-      console.log(r.route.path)
-    }
+      console.log(r.route.path);
+    };
   });
 
-const { PORT } = minimist(process.argv.slice(2), options);
+const  PORT  = process.env.PORT;
 
 const server = app.listen(PORT, () => {
     logger.info(`🚀 Server started at http://localhost:${PORT}`)
