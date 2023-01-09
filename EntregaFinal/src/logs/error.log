@@ -1,0 +1,25 @@
+[2023-01-09T13:43:26.835] [ERROR] Error - Error creando el usuario: MongoServerError: E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "juancarlos@gmail.com" }
+[2023-01-09T16:24:26.031] [ERROR] Error - [Error: ENOENT: no such file or directory, open 'C:\Users\Jenn\Desktop\Backend\EntregaFinal\public\img\1673292266028-IMG_6261.JPEG'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Jenn\\Desktop\\Backend\\EntregaFinal\\public\\img\\1673292266028-IMG_6261.JPEG',
+  storageErrors: []
+}
+[2023-01-09T16:24:26.098] [ERROR] Error - Ruta: "/auth/signup" | Método: "POST" | Respuesta HTTP: "500: Internal Server Error"
+[2023-01-09T16:24:33.068] [ERROR] Error - [Error: ENOENT: no such file or directory, open 'C:\Users\Jenn\Desktop\Backend\EntregaFinal\public\img\1673292273067-IMG_6261.JPEG'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Jenn\\Desktop\\Backend\\EntregaFinal\\public\\img\\1673292273067-IMG_6261.JPEG',
+  storageErrors: []
+}
+[2023-01-09T16:24:33.128] [ERROR] Error - Ruta: "/auth/signup" | Método: "POST" | Respuesta HTTP: "500: Internal Server Error"
+[2023-01-09T16:24:47.568] [ERROR] Error - [Error: ENOENT: no such file or directory, open 'C:\Users\Jenn\Desktop\Backend\EntregaFinal\public\img\1673292287567-IMG_6261.JPEG'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\Jenn\\Desktop\\Backend\\EntregaFinal\\public\\img\\1673292287567-IMG_6261.JPEG',
+  storageErrors: []
+}
+[2023-01-09T16:24:47.628] [ERROR] Error - Ruta: "/auth/signup" | Método: "POST" | Respuesta HTTP: "500: Internal Server Error"
