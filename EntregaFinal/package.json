@@ -1,7 +1,7 @@
 {
   "name": "entregafinal",
   "version": "1.0.0",
-  "description": "",
+  "description": "API REST CRUD CON MONGO",
   "main": "server.js",
   "type": "module",
   "scripts": {

@@ -4,15 +4,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inicio</title>
-    <link
-      rel="stylesheet"
-      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="/node_modules/boxicons/css/boxicons.min.css" />
-    <link rel="stylesheet" href="/css/styles.css" />
+    
+
+ 
+ 
   </head>
   <body>
-    <!-- -------------------- Comienzo barra de navegación --------------------- -->
+   
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand" href="/">
@@ -49,27 +47,20 @@
           id="navbar-list-4"
         >
           <ul class="navbar-nav align-items-center">
-            <!-- Acá se introducirá la información de usuario o los botones de login y signup -->
+           
             <li id="user" class="nav-item dropdown"></li>
           </ul>
         </div>
       </div>
     </nav>
-    <!-- ----------------------- Fin barra de navegación ----------------------- -->
+    
 
     <main>
       <div class="container py-5 min-vh-70">
-        <button
-          type="button"
-          class="btn btn-dark float-right"
-          data-bs-toggle="modal"
-          data-bs-target="#modal-add-product"
-        >
-          Agregar Producto
-        </button>
+    
         <h1>Listado de productos</h1>
 
-        <!-- ------------------------ Filtrado de productos ------------------------ -->
+       
         <form id="form-search" class="mt-4">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -164,9 +155,7 @@
             </div>
           </div>
         </form>
-        <!-- ---------------------- Fin filtrado de productos ---------------------- -->
-
-        <!-- ------------------------ Agregado de productos ------------------------ -->
+        
         <div
           class="modal fade"
           id="modal-add-product"
@@ -292,9 +281,7 @@
             </div>
           </div>
         </div>
-        <!-- ---------------------- Fin agregado de productos ---------------------- -->
-
-        <!-- ------------------------ Edición de productos ------------------------- -->
+       
         <div
           class="modal fade"
           id="modal-edit-product"
@@ -420,18 +407,16 @@
             </div>
           </div>
         </div>
-        <!-- ---------------------- Fin edición de productos ----------------------- -->
-
-        <!-- ------------------------ Listado de productos ------------------------- -->
+        
         <div
           id="product-list"
           class="row row-cols-1 row-cols-md-3 g-4 mb-4"
         ></div>
-        <!-- ---------------------- Fin listado de productos ----------------------- -->
+        
       </div>
     </main>
 
-    <!-- ------------------------- Comienzo footer ------------------------- -->
+    
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container text-center">
         <span class="text-muted"
@@ -439,9 +424,7 @@
         >
       </div>
     </footer>
-    <!-- ----------------------------- Fin footer ------------------------------ -->
-
-    <!-- -------------------------- Inicio de scripts -------------------------- -->
+   
     <!-- JS Popper -->
     <script src="/node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
 
