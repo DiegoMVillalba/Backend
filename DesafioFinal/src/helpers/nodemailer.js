@@ -1,16 +1,18 @@
 const nodemailer = require('nodemailer');
 const config = require('../config/index.js');
+const dotenv = require('dotenv');
+dotenv.config()
 
 async function mailing(mail, subject, html) {
     let testAccount = await nodemailer.createTestAccount();
 
     let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
+        host: "tonyhaa@gmail.com",
         port: 587,
         secure: false,
         auth: {
-            user: config.MAIL_FROM,
-            pass: config.MAIL_PASS 
+            user: process.env.MAIL_FROM,
+            pass: process.env.MAIL_PASS 
         },
         tls: {
             rejectUnauthorized: false
@@ -18,8 +20,8 @@ async function mailing(mail, subject, html) {
     });
 
     let info = await transporter.sendMail({
-        from: config.MAIL_FROM,
-        to: await mail || config.MAIL_TO,
+        from: process.env.MAIL_FROM,
+        to: await mail || process.env.MAIL_TO,
         subject: await subject,
         html: await html,
     });

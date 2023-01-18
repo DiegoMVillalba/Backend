@@ -5,6 +5,10 @@ const LocalStrategy = require("passport-local").Strategy;
 const UserModel = require("../models/userSchema.js");
 const mailing = require("../helpers/nodemailer.js");
 const config = require("../config/index.js")
+const dotenv = require("dotenv");
+dotenv.config()
+
+
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -17,7 +21,7 @@ passport.deserializeUser((id, done) => {
 });
 
 const strategyJWT = {
-  secretOrKey: config.TOKEN,
+  secretOrKey: process.env.SECRET_KEY,
   jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
 };
 

@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const config = require("../config/index.js");
+const dotenv = require("dotenv");
+dotenv.config()
 
 class MongoCxn {
   constructor() {
@@ -12,7 +14,8 @@ class MongoCxn {
   }
 
   createConnection() {
-    const uri = `mongodb+srv://${config.DB_USER}:${config.DB_PASS}@cluster0.wnejdhr.mongodb.net/${config.DB_NAME}?retryWrites=true&w=majority`;
+    const uri = process.env.MONGO_DB;
+    
     const options = {
       useNewUrlParser: true,
       useCreateIndex: true,
