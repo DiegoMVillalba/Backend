@@ -7,12 +7,12 @@ async function mailing(mail, subject, html) {
     let testAccount = await nodemailer.createTestAccount();
 
     let transporter = nodemailer.createTransport({
-        host: "tonyhaa@gmail.com",
+        service:'gmail',
         port: 587,
         secure: false,
         auth: {
             user: process.env.MAIL_FROM,
-            pass: process.env.MAIL_PASS 
+            pass: process.env.MAIL_PASS
         },
         tls: {
             rejectUnauthorized: false

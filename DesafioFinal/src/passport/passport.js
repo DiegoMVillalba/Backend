@@ -9,7 +9,6 @@ const dotenv = require("dotenv");
 dotenv.config()
 
 
-
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
@@ -25,14 +24,12 @@ const strategyJWT = {
   jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
 };
 
-passport.use(
-  "register",
-  new LocalStrategy(
-    {
-      usernameField: "email",
-      passwordField: "password",
-      passReqToCallback: true,
-    },
+passport.use("register",new LocalStrategy(
+  {
+    usernameField: "email",
+    passwordField: "password",
+    passReqToCallback: true,
+  },
     async function (req, email, password, done) {
       try {
         const { username, password, phone, email } = req.body;
@@ -45,8 +42,10 @@ passport.use(
           await newUser.save();
 
           const subject = "Nuevo Registro de Usuario";
-          const html = `<p>El usuario: ${newUser.username} se ha registrado
-                        con el mail: ${newUser.email}</p>`;
+          const html = `<p>El usuario: ${newUser.username}<br>,
+           se ha registrado con el mail: ${newUser.email} <br>,
+                        con el telefono: ${newUser.phone},
+                        </p>`;
           await mailing("", subject, html);
 
           return done(
@@ -62,14 +61,12 @@ passport.use(
   )
 );
 
-passport.use(
-  "login",
-  new LocalStrategy(
-    {
-      usernameField: "email",
-      passwordField: "password",
-      passReqToCallback: true,
-    },
+passport.use("login",new LocalStrategy( 
+  {
+    usernameField: "email",
+    passwordField: "password",
+    passReqToCallback: true,
+  },
     async (req, email, password, done) => {
       try {
         const { email, password } = req.body;
