@@ -65,7 +65,7 @@ app.use((req, res, next) => {
 app.set("views", "./src/views");
 
 app.set("view engine", "ejs");
-//app.set('view engine', 'pug');
+// app.set('view engine', 'pug');
 
 // app.engine('handlebars', handlebars());
 // app.set('view engine', 'handlebars');
