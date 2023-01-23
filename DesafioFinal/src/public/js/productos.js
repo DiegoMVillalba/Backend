@@ -12,7 +12,7 @@ function validarForm() {
   let title = document.getElementById("title").value;
   let price = document.getElementById("price").value;
   let thumbnail = document.getElementById("thumbnail").value;
-  if (title === "" || price === "" || thumbnail === "") {
+  if (title === "" || price === "" || thumbnail === "" || stock === "") {
     alert(`CAMPOS REQUERIDOS PARA AGREGAR PRODUCTO`);
   } else {
     let newProd = {
@@ -57,6 +57,7 @@ const verProdHtml = (data) => {
     template.getElementById("prodPrice").textContent = producto.price;
     template.getElementById("prodImg").setAttribute("src", producto.thumbnail);
     template.getElementById("prodId").textContent = producto._id;
+   
 
     const clone = template.cloneNode(true);
     fragment.appendChild(clone);

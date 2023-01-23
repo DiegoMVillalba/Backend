@@ -66,15 +66,23 @@
             <th>PRODUCTO</th>
             <th>PRECIO</th>
             <th>IMAGEN</th>
+            <th>ID</th>
           </tr>
         </thead>
         <tbody id="tableProd">
           <template id="templateList">
             <tr>
-              <td style="display:none;" id="prodId"></td>
               <td id="prodTitle"></td>
               <td id="prodPrice"></td>
               <td><img src="" alt="imagen" id="prodImg" style="width: 10%"></td>
+              
+              <td id="prodId"></td>
+              <td>
+                  <form action="/api/cart" method="post"><button
+                    type="submit"  class="btn btn-success">
+                    Agregar al carrito
+                  </form>
+              </td>
             </tr>
           </template>
         </tbody>

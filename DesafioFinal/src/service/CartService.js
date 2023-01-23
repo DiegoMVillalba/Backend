@@ -5,7 +5,10 @@ const mailing = require("../helpers/nodemailer.js");
 
 class CartService {
   async addCartService(productsArray) {
+
+   
     try {
+      
       const data = await { ...productsArray };
       const newProducto = await cartDb.addCartDb(data);
       if (newProducto == false) {

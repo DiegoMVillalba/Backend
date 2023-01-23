@@ -67,11 +67,12 @@ class Producto {
   }
 
   async viewByCategory(req, res) {
+
     try {
       const category = await req.params.category;
       const prodByCategory = await factory.findByCategory(category);
       if (prodByCategory) {
-        return res.status(200).json(prodByCategory);
+        return res.status(200).render(prodByCategory);
       }
     } catch (error) {
       return res.status(400).json({ mensaje: "Ocurrió un error", error });

@@ -25,12 +25,25 @@ class CartController {
   };
 
   viewAllCart = async (req, res) => {
+    const {username} = req.params;
     try {
-      const productos = await cart.viewAllCartService();
-      return res.status(200).json(productos);
+      let carrito= await cart.viewAllCartService();
+      let products = carrito.products;
+      await res.render('cart',{
+        username: username,
+        products: products
+      })
+      
     } catch (error) {
-      logger.error.error(error);
+      console.log(error)
     }
+
+    // try {
+    //   const productos = await cart.viewAllCartService();
+    //   return res.status(200).json(productos);
+    // } catch (error) {
+    //   logger.error.error(error);
+    // }
   };
 
   viewByIdCart = async (req, res) => {
